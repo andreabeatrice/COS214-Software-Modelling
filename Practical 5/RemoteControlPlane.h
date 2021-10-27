@@ -9,11 +9,27 @@ using namespace std;
 class RemoteControlPlane: public RemoteControlVehicle{
 
 public:
+	RemoteControlVehicle* nextHandler;
 
 	RemoteControlPlane() : RemoteControlVehicle() {
 
 	};
 
+	RemoteControlPlane(RemoteControlVehicle* nextHandler) : RemoteControlVehicle() {
+		this->nextHandler = nextHandler;
+	};
+
+	void handleRequest(string cmd){
+		if(cmd.compare("fly") == 0){
+			if(this->getOn())
+				cout<<"RC plane flies higher."<<endl;
+			else
+				cout<<"RC car is off."<<endl;
+		}
+		else if (this->nextHandler != NULL){
+			this->nextHandler->handleRequest(cmd);
+		}
+	};
 
 	void on(){
 		

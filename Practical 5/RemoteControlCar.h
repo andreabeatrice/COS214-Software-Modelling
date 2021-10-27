@@ -9,9 +9,26 @@ using namespace std;
 class RemoteControlCar: public RemoteControlVehicle{
 
 public:
+	RemoteControlVehicle* nextHandler;
 
 	RemoteControlCar() : RemoteControlVehicle() {
 
+	};
+
+	RemoteControlCar(RemoteControlVehicle* nextHandler) : RemoteControlVehicle() {
+		this->nextHandler = nextHandler;
+	};
+
+	void handleRequest(string cmd){
+		if(cmd.compare("speed") == 0){
+			if(this->getOn())
+				cout<<"RC car accelerates."<<endl;
+			else
+				cout<<"RC car is off."<<endl;
+		}
+		else if (this->nextHandler != NULL){
+			this->nextHandler->handleRequest(cmd);
+		}
 	};
 
 
@@ -61,7 +78,6 @@ public:
 
 	};
 
-	
 
 };
 

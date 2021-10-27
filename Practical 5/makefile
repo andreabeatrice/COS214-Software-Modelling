@@ -7,7 +7,7 @@ Main: $(ofiles)
 Main.o: Main.cpp
 	$(gpp_o) Main.cpp
 
-RemoteControlVehicle.o: RemoteControlVehicle.cpp RemoteControlVehicle.h 
+RemoteControlVehicle.o: RemoteControlVehicle.cpp RemoteControlVehicle.h
 	$(gpp_o) RemoteControlVehicle.cpp
 
 RemoteControlCar.o: RemoteControlCar.cpp RemoteControlCar.h RemoteControlVehicle.h
