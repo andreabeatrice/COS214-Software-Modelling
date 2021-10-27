@@ -5,6 +5,8 @@
 #include <string>
 
 using namespace std;
+
+
 class RemoteControlVehicle {
 private:
 	bool isOn; //representing the on/off state of the vehicle
@@ -15,6 +17,7 @@ public:
 		isOn = false;
 	};
 
+	virtual void handleRequest(string cmd){};
 
 	virtual void on()=0;
 

@@ -24,7 +24,7 @@ int main(){
 
 	RemoteControlVehicle* zoomerPlane = new RemoteControlPlane();
 
-	cout<<"****RemoteControlVehicle class (RemoteControlPlane)****"<<endl;
+	cout<<"****RemoteControlVehicle Test (RemoteControlPlane)****"<<endl;
 	zoomerPlane->on();
 	zoomerPlane->forward();
 	zoomerPlane->backward();
@@ -39,9 +39,9 @@ int main(){
 	Command* backCommand = new MoveBackward(zoomer);
 
 	//command tests
-	cout<<"****RemoteControlVehicle class (RemoteControlCar)****"<<endl;
+	cout<<"****RemoteControlVehicle Test (RemoteControlCar)****"<<endl;
 
-	cout<<"****Command class****"<<endl;
+	cout<<"****Command Test****"<<endl;
 	onCommand->execute();
 	onCommand->undo();
 
@@ -61,7 +61,7 @@ int main(){
 	Button* backButton = new Button(backCommand);
 
 	//button tests
-	cout<<"****Button class****"<<endl;
+	cout<<"****Button Test****"<<endl;
 	onButton->press();
 	goButton->press();
 	backButton->press();
@@ -73,7 +73,7 @@ int main(){
 	//YOU MUST ALSO EXPLICITLY SHOW WHERE YOU DEMONSTRATE THE ADAPTER PATTERN.
 
 	RemoteControlVehicle* falcon9 = new RocketAdapter(new RemoteControlRocket());
-	cout<<"****RocketAdapter class****"<<endl;
+	cout<<"****RocketAdapter Test****"<<endl;
 	falcon9->on();
 	falcon9->forward();
 	falcon9->backward();
@@ -85,7 +85,13 @@ int main(){
 	rocketPowerDown->press();
 
 	cout<<endl;
-	
+
+	cout<<"****Chain of Responsibility Test****"<<endl;
+	RemoteControlVehicle* zP = new RemoteControlPlane(zoomer);
+	zP->on();
+	zoomer->on();
+	zP->handleRequest("speed");
+	zP->handleRequest("fly");
 
 	return 0;
 }
